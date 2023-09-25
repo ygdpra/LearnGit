@@ -1,0 +1,17 @@
+/// <reference types="cypress" />
+
+describe('my first test', () => {
+    it('clicking "type" shows the right headings', () => {
+        cy.visit('https://example.cypress.io')
+
+        cy.pause()
+
+        cy.contains('type').click()
+
+        cy.url().should('include', '/command/actions')
+
+        cy.get('.action-email')
+        .type('a@gmail.com')
+        .should('have.value', 'a@gmail.com')
+    })
+})
