@@ -1,0 +1,60 @@
+/// <reference types="cypress" />
+
+describe('navbar test', () => {
+    before(() => {
+        cy.visit('http://zero.webappsecurity.com/index.html');
+    });
+
+    it('should display online banking content', () => {
+        cy.get('#onlineBankingMenu').click();
+        cy.url().should('include', 'online-banking.html');
+        cy.get('h1').should('be.visible');
+    });
+
+    it('should display feedback content', () => {
+        cy.get('#feedback').click();
+        cy.url().should('include', 'feedback.html');
+        cy.get('h3').should('contain', 'Feedback');
+    });
+
+    it('should navigate to homepage', () => {
+        cy.contains('Zero Bank').click();
+        cy.url().should('include', 'index.html');
+    });
+
+    it('should display Account Summary content', () => {
+        cy.get('#account_summary_tab').click();
+        cy.url().should('include', 'account-summary.html');
+        cy.get('h2').should('contain', 'Account Summary');
+    });
+
+    it('should display Account Activity content', () => {
+        cy.get('#account_activity_tab').click();
+        cy.url().should('include', 'account-activity.html');
+        cy.get('h2').should('contain', 'Account Activity');
+    });
+
+    it('should display Transfer Funds content', () => {
+        cy.get('#transfer_funds_tab').click();
+        cy.url().should('include', 'transfer-funds.html');
+        cy.get('h2').should('contain', 'Transfer Funds');
+    });
+
+    it('should display Pay Bills content', () => {
+        cy.get('#pay_bills_tab').click();
+        cy.url().should('include', 'pay-bills.html');
+        cy.get('h2').should('contain', 'Pay Bills');
+    });
+
+    it('should display My Money Map content', () => {
+        cy.get('#money_map_tab').click();
+        cy.url().should('include', 'money-map.html');
+        cy.get('h2').should('contain', 'My Money Map');
+    });
+
+    it('should display Online Statements content', () => {
+        cy.get('#online_statements_tab').click();
+        cy.url().should('include', 'online-statements.html');
+        cy.get('h2').should('contain', 'Online Statements');
+    });
+});
