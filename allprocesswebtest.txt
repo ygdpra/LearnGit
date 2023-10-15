@@ -1,0 +1,75 @@
+/// <reference types="cypress" />
+
+describe('saucedemo test', () => {
+    before(() => {
+        cy.visit('https://www.saucedemo.com/v1/index.html');
+        cy.url().should('include', 'index.html')
+    });
+
+    it('should login to website', () => {
+        cy.get('#user-name').clear()
+        cy.get('#user-name').type('standard_user')
+        cy.get('#password').clear()
+        cy.get('#password').type('secret_sauce')
+        cy.get('.btn_action').click()
+    });
+
+describe('product page test', () => {
+    before(() => {
+      cy.visit('https://www.saucedemo.com/v1/inventory-item.html?id=4');
+    });
+    it('should show product description', () => {
+        cy.get('.inventory_details_name').should('contain.text', 'Sauce Labs Backpack');
+        cy.get('.inventory_details_desc').should('contain.text', 'carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.');
+        cy.get('.inventory_details_price').should('contain.text', '$29.99');
+      });
+        
+    it('should add the product to the cart', () => {
+      cy.get('.btn_inventory').click();
+      cy.get('.shopping_cart_badge').should('contain', '1');
+    });
+
+    it('should remove the product from the cart', () => {
+      cy.get('.btn_inventory').click();
+      cy.get('.shopping_cart_badge').should('contain', '1');
+      cy.get('.btn_secondary').click();
+      cy.get('.shopping_cart_badge').should('not.exist');
+    });
+
+    it('should remove the product from the cart', () => {
+        cy.get('.btn_inventory').click();
+        cy.get('.shopping_cart_badge').should('contain', '1');
+        cy.get('.btn_secondary').click();
+        cy.get('.shopping_cart_badge').should('not.exist');
+      });
+
+    it('should back to homepage', () => {
+       cy.get('.inventory_details_back_button').click();
+       cy.url().should('include', 'https://www.saucedemo.com/v1/inventory.html');
+    });
+
+    describe('checkout test', () => {
+    before(() => {
+        cy.visit('https://www.saucedemo.com/v1/cart.html');
+    });
+    
+    it('should checkout the product', () => {
+        cy.get('.btn_action checkout_button').click();
+        cy.url().should('include', '/checkout-step-one.html');
+    });
+    it('should fill the identity form', () => {
+        cy.get('#first-name').type('John');
+        cy.get('#last-name').type('Doe');
+        cy.get('#postal-code').type('12345');
+        cy.get('.btn_primary cart_button').click();
+        cy.url().should('include', '/checkout-step-two.html');
+        cy.get('.btn_action cart_button').click();
+      });
+
+    it('should finish the order', () => {
+      cy.get('h2').should('contain.text', 'THANK YOU FOR YOUR ORDER')
+        
+      });
+    });
+});
+});
