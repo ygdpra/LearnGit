@@ -1,0 +1,42 @@
+search.feature
+
+Feature: Search an item from the searchbox
+
+	As a user 
+	I want to search an item in the searchbox
+
+Scenario: Searching an item in the searchbox
+Given I visit the homepage
+When I fill "zero" in the searchbox
+Then I see the result should be displayed
+
+
+
+
+search.js
+
+const { Given, When, Then } = require('@badeball/cypress-cucumber-preprocessor');
+
+Given('I visit the homepage', () => {
+   cy.visit('http://zero.webappsecurity.com/index.html');
+})
+
+When('I fill "zero" in the searchbox', () => {
+   cy.get('#searchTerm').type('zero{enter}');
+})
+
+Then('I see the result should be displayed', () => {
+   cy.get('a').should('contain.text', 'Zero - Personal Banking - Loans - Credit Cards');
+   cy.get('a').should('contain.text', 'Zero - Log in');
+   cy.get('a').should('contain.text', 'Zero - FAQ - Frequently Asked Questions');
+   cy.get('a').should('contain.text', 'Zero - Contact Us');
+   cy.get('a').should('contain.text', 'Zero - Help');
+   cy.get('a').should('contain.text', 'Zero - Free Access to Online Banking');
+   cy.get('a').should('contain.text', 'Zero - Account Summary');
+   cy.get('a').should('contain.text', 'Zero - Account Activity');
+   cy.get('a').should('contain.text', 'Zero - Transfer Funds');
+   cy.get('a').should('contain.text', 'Zero - Pay Bills');
+   cy.get('a').should('contain.text', 'Zero - My Money Map');
+   cy.get('a').should('contain.text', 'Zero - Online Statements');
+})
+
