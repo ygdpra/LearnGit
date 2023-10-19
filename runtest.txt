@@ -1,0 +1,53 @@
+search.page.js
+
+const URL = 'http://zero.webappsecurity.com/index.html';
+const SEARCHBOX = '#searchTerm';
+const a = 'resultText';
+
+
+class HomePage{
+    static visit() {
+        cy.visit(URL)
+    }
+    static fillSearchbox(zero) {
+        cy.get(SEARCHBOX).type(zero + '{enter}')
+    }
+    static showResult(resultText) {
+        cy.get(a).should('contain.text', zero)
+    }
+
+ }
+ export default HomePage
+ 
+ 
+search.js
+
+import HomePage from './search.page.js';
+
+const { Given, When, Then } = require('@badeball/cypress-cucumber-preprocessor');
+
+Given('I visit the homepage', () => {
+   HomePage.visit();
+})
+
+When('I fill "zero" in the searchbox', () => {
+    HomePage.fillSearchbox('zero{enter}');
+
+})
+
+Then('I see the result should be displayed', () => {
+    cy.get('a').should('contain.text', 'Zero - Personal Banking - Loans - Credit Cards');
+    cy.get('a').should('contain.text', 'Zero - Log in');
+    cy.get('a').should('contain.text', 'Zero - FAQ - Frequently Asked Questions');
+    cy.get('a').should('contain.text', 'Zero - Contact Us');
+    cy.get('a').should('contain.text', 'Zero - Help');
+    cy.get('a').should('contain.text', 'Zero - Free Access to Online Banking');
+    cy.get('a').should('contain.text', 'Zero - Account Summary');
+    cy.get('a').should('contain.text', 'Zero - Account Activity');
+    cy.get('a').should('contain.text', 'Zero - Transfer Funds');
+    cy.get('a').should('contain.text', 'Zero - Pay Bills');
+    cy.get('a').should('contain.text', 'Zero - My Money Map');
+    cy.get('a').should('contain.text', 'Zero - Online Statements');
+})
+
+
