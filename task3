@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>use let</title>
+</head>
+<body>
+      <p id="use_let_x"></p>
+      <p id="use_let_y"></p>
+
+    <script>
+        //use let
+        let x1 = "10";
+        let x2 = 10;
+        let x3 = 10;
+        let x4 = x1 + x2 + x3;
+        document.getElementById("use_let_x").innerHTML = "the value of x: " + x4;
+
+        let y1 = 10;
+        let y2 = 10;
+        let y3 = "10";
+        let y4 = y1 + y2 + y3;
+        document.getElementById("use_let_y").innerHTML = "the value of y: " + y4;
+    </script>      
+</body>
+</html>
