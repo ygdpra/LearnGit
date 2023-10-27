@@ -1,8 +1,11 @@
-describe('Login API Test', () => {
-  it('Should be able to login and clear cookies', () => {
-    const userData = { email: 'eve.holt@reqres.in', password: 'cityslicka' };
-
-    cy.request('POST', 'https://reqres.in/api/login', { body: userData }).then((response) => {
+describe('Login via API Test', () => {
+  it('Should be able to login', () => {
+    cy.request('POST', 'https://reqres.in/api/login', {
+      body: {
+        email: 'eve.holt@reqres.in',
+        password: 'cityslicka'
+      }
+    }).then((response) => {
       expect(response.status).to.equal(200);
       expect(response.body.token).to.equal('QpwL5tke4Pnpja7X4');
 
@@ -11,3 +14,5 @@ describe('Login API Test', () => {
     });
   });
 });
+
+
