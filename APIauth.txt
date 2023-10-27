@@ -1,0 +1,13 @@
+userData = { email: 'eve.holt@reqres.in', password: 'cityslicka' };
+
+describe('Login API Test', () => {
+  it('Should be able to login and clear cookies', () => {
+    cy.request('POST', 'https://reqres.in/api/login', { body: userData }).then((response) => {
+      expect(response.status).to.equal(200);
+      expect(response.body.token).to.equal('QpwL5tke4Pnpja7X4');
+
+      cy.clearCookies();
+      cy.getCookies().should('be.empty');
+    });
+  });
+});
