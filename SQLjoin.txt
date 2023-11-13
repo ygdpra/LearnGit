@@ -1,0 +1,42 @@
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    email VARCHAR(255),
+    name VARCHAR(255),
+    password VARCHAR(255),
+    address VARCHAR(255),
+    role VARCHAR(255),
+    status VARCHAR(255),
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+);
+
+CREATE TABLE Products (
+    id INT,
+    category_id INT,
+    user_id INT,
+    code VARCHAR(255),
+    name VARCHAR(255), 
+    slug VARCHAR(255),
+    description LONGTEXT,
+    photo VARCHAR(255), 
+    qty DOUBLE,
+    unit VARCHAR(255), 
+    price DOUBLE,
+    status VARCHAR(255) 
+);
+
+CREATE TABLE categories (
+    id INT PRIMARY KEY,
+    user_id INT,
+    code VARCHAR(255),
+    name VARCHAR(255),
+    slug VARCHAR(255),
+    description TEXT,
+    status VARCHAR(255),
+    photo VARCHAR(255)
+);
+
+
+SELECT p.id, p.category_id, p.user_id, p.code, p.name, p.slug, p.description, p.photo, p.qty, p.unit, p.price, p.status, c.name AS category_name
+FROM products p
+LEFT JOIN categories c ON p.category_id = c.id;
