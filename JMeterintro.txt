@@ -1,0 +1,20 @@
+Ada dua tools selain Jmeter, untuk penjelasan pros dan consnya dibanding dengan Jmeter adalah sbb:
+RadView
+Kelebihan RadView:
+•	memiliki kemampuan yang baik dalam menangani uji beban yang skala besar dan kompleks.
+•	Webload menyediakan laporan dan analisis kinerja yang mendalam, membantu pengguna memahami secara detail performa aplikasi web.
+•	Webload memiliki kemampuan merekam script pengujian secara otomatis, memudahkan pembuatan skenario pengujian.
+•	Integrasi CI/CD untuk mendukung otomatisasi pengujian dalam siklus pengembangan software
+Kekurangan RadView:
+•	Menggunakan tools ini harus belajar dulu karena memerlukan pemahaman yang lebih tinggi, terutama untuk user yang baru memakai tools ini.
+•	Layanan dan lisensi tools ini memerlukan biaya.
+
+LoadNinja
+Kelebihan LoadNinja:
+•	LoadNinja memanfaatkan konsep uji beban berbasis cloud, menghilangkan kebutuhan untuk mengelola infrastruktur sendiri.
+•	LoadNinja merekam skenario uji beban dengan menggunakan browser sungguhan, jadi memberikan hasil yang lebih realistis.
+•	Kemampuan untuk dengan mudah diukur dan menangani beban pengguna yang meningkat dengan dinamis.
+•	LoadNinja dapat diintegrasikan dengan tools CI/CD.
+Kekurangan LoadNinja:
+•	Beberapa pengguna mungkin merasa kurangnya kontrol dibandingkan dengan tools seperti Jmeter.
+•	LoadNinja adalah layanan berbasis langganan, yang dapat memerlukan biaya.
