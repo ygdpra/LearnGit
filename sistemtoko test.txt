@@ -1,0 +1,52 @@
+/// <reference types="cypress" />
+
+describe('Login Tests', () => {
+    const validUsername = 'wingardiumleviosabyhermione@gmail.com';
+    const validPassword = 'inipassword';
+    const invalidUsername = 'wrongEmail';
+    const invalidPassword = '1a2b3c';
+    const validEmail = 'wingardiumleviosabyhermione@gmail.com';
+    const invalidEmail = 'hehe@gmail.com';
+  
+    beforeEach(() => {
+      cy.visit('https://sistemtoko.com/login');
+    });
+  
+    it('Test Username benar, password benar, harus sukses login', () => {
+      cy.get('input[name="email"]').clear().type(validUsername);
+      cy.get('input[name="password"]').clear().type(validPassword);
+      cy.get('[type="submit"]').click();
+    });
+  
+    it('Test Username benar, password salah, harus gagal login', () => {
+      cy.get('input[name="email"]').clear().type(validUsername);
+      cy.get('input[name="password').clear().type(invalidPassword);
+      cy.get('[type="submit"]').click();
+    });
+  
+    it('Test Username salah, password benar, harus gagal login', () => {
+      cy.get('input[name="email"]').clear().type(invalidUsername);
+      cy.get('input[name="password').clear().type(validPassword);
+      cy.get('[type="submit"]').click();
+    });
+  
+    it('Test Username salah, password salah, harus gagal login', () => {
+      cy.get('input[name="email"]').clear().type(invalidUsername);
+      cy.get('input[name="password').clear().type(invalidPassword);
+      cy.get('[type="submit"]').click();
+    });
+  
+    it('Test Forgot password dan email sudah terdaftar, menerima email update password', () => {
+      cy.contains('I forgot my password').click();
+      cy.get('input[name="email"]').clear().type(validEmail);
+      cy.get('[type="submit"]').click()
+      cy.contains('Password reminder sent!').should('be.visible')
+    });
+  
+    it('Test Forgot password dan email belum terdaftar, tidak menerima email update password', () => {
+      cy.contains('I forgot my password').click();
+      cy.get('input[name="email"]').clear().type(invalidEmail);
+      cy.get('[type="submit"]').click()
+
+    });
+  });
